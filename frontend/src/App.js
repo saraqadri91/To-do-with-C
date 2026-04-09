@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TaskList from './components/TaskList';
 import AddTask from './components/AddTask';
 import Mascot from './components/Mascot';
@@ -13,19 +13,19 @@ function App() {
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   // Show toast notification
-  const showToast = (message, type = 'info') => {
+  const showToast = useCallback((message, type = 'info') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
-  };
+  }, []);
 
   // Update mascot mood based on action
-  const updateMascotMood = (mood) => {
+  const updateMascotMood = useCallback((mood) => {
     setMascotMood(mood);
     setTimeout(() => setMascotMood('happy'), 2000);
-  };
+  }, []);
 
   // Fetch all tasks from API
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       setLoading(true);
       updateMascotMood('working');
@@ -47,7 +47,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // Add a new task
   const addTask = async (description) => {
