@@ -50,7 +50,7 @@ function App() {
   }, []);
 
   // Add a new task
-  const addTask = async (description) => {
+  const addTask = useCallback(async (description) => {
     setIsAddingTask(true);
     updateMascotMood('working');
     
@@ -80,10 +80,10 @@ function App() {
     } finally {
       setIsAddingTask(false);
     }
-  };
+  }, [tasks, showToast, updateMascotMood]);
 
   // Delete a task
-  const deleteTask = async (id) => {
+  const deleteTask = useCallback(async (id) => {
     updateMascotMood('working');
     
     try {
@@ -106,10 +106,10 @@ function App() {
       console.error('Error deleting task:', err);
       updateMascotMood('sleeping');
     }
-  };
+  }, [tasks, showToast, updateMascotMood]);
 
   // Update task completion status
-  const updateTaskStatus = async (id, completed) => {
+  const updateTaskStatus = useCallback(async (id, completed) => {
     updateMascotMood('working');
     
     try {
@@ -138,7 +138,7 @@ function App() {
       console.error('Error updating task:', err);
       updateMascotMood('sleeping');
     }
-  };
+  }, [tasks, showToast, updateMascotMood]);
 
   // Load tasks on component mount
   useEffect(() => {
