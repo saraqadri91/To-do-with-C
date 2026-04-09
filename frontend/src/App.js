@@ -143,7 +143,7 @@ function App() {
   // Load tasks on component mount
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [fetchTasks]);
 
   const handleMascotClick = () => {
     console.log('Mascot clicked! Current mood:', mascotMood);
@@ -244,10 +244,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-8 text-white/80">
-          <p className="text-sm">Built with React, Node.js, and C programming</p>
-          <p className="text-xs mt-2">With animated characters and modern design ð</p>
-        </div>
+
       </div>
 
       {/* Toast Notification */}
