@@ -1,0 +1,19 @@
+{
+  "name": "todo-app-netlify",
+  "version": "1.0.0",
+  "description": "To-Do List app for Netlify deployment",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "dev": "cd frontend && npm start",
+    "install-deps": "cd frontend && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "serverless-http": "^3.2.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
